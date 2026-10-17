@@ -1,10 +1,11 @@
 name: Tests
 
-# Every push and pull request to main runs the whole suite. This code holds
-# the transfer key in the browser, so nothing reaches a release untested.
+# Every push, to any branch, and every pull request to main runs the whole
+# suite. This code holds the transfer key in the browser, so nothing reaches
+# a release untested — and main only takes a commit whose checks have
+# already passed on another branch (ruleset "main").
 on:
   push:
-    branches: [main]
   pull_request:
     branches: [main]
 
