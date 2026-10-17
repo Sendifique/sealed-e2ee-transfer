@@ -3,6 +3,7 @@
 [![Tests](https://github.com/Sendifique/sealed-e2ee-transfer/actions/workflows/test.yml/badge.svg)](https://github.com/Sendifique/sealed-e2ee-transfer/actions/workflows/test.yml)
 [![npm](https://img.shields.io/npm/v/@sendifique/sealed-e2ee-transfer.svg)](https://www.npmjs.com/package/@sendifique/sealed-e2ee-transfer)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/Sendifique/sealed-e2ee-transfer/badge)](https://scorecard.dev/viewer/?uri=github.com/Sendifique/sealed-e2ee-transfer)
 
 End-to-end encrypted file transfer in the browser.
 
