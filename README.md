@@ -58,6 +58,14 @@ npm install --save-exact @sendifique/sealed-e2ee-transfer
 Pin an exact version and commit your lockfile: this is the code that holds
 your users' keys (THREAT-MODEL.md).
 
+Every release is published from this repository by GitHub Actions, with a
+provenance attestation that names the commit it was built from. Check what
+you installed with:
+
+```
+npm audit signatures
+```
+
 **With a bundler** (Vite, webpack, esbuild, …) import it like any package.
 Two files are not imported but served as they are, from your own origin:
 `src/browser/take-key.js` (a classic script) and `src/browser/sw.js` (the

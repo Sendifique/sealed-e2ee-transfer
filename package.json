@@ -1,7 +1,6 @@
 {
   "name": "@sendifique/sealed-e2ee-transfer",
   "version": "1.0.0",
-  "private": true,
   "description": "End-to-end encrypted file transfer in the browser: AES-256-GCM streams, the key in the link or behind a password, and the server-side checks for Node.",
   "keywords": [
     "e2ee",
@@ -26,6 +25,10 @@
     "javascript"
   ],
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "homepage": "https://github.com/Sendifique/sealed-e2ee-transfer#readme",
   "repository": {
     "type": "git",

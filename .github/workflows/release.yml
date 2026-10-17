@@ -1,0 +1,50 @@
+name: Release
+
+# Publishes to npm when a GitHub release is published — and only then. The
+# package is built from exactly the tagged commit, after the tests pass, and
+# carries a provenance attestation that ties it to this repository, this
+# workflow and that commit (`npm audit signatures` checks it).
+#
+# Authentication is npm trusted publishing (OIDC): npm accepts a short-lived
+# token GitHub issues to this workflow, so no long-lived npm token is stored
+# anywhere. Only the very first publish, before the package exists on npm,
+# needs a token (secret NPM_TOKEN in the "npm" environment); it is deleted
+# afterwards.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # The environment holds the publish rights: only tags v*, and a person
+    # approves each run.
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write   # for trusted publishing and the provenance attestation
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 26
+          registry-url: 'https://registry.npmjs.org'
+      # The tag names the version that is published; a mismatch with
+      # package.json would publish something other than what was tagged.
+      - name: Tag matches package.json
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          if [ "v$version" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match package.json version $version"
+            exit 1
+          fi
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
