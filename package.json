@@ -1,6 +1,6 @@
 {
   "name": "@sendifique/sealed-e2ee-transfer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "End-to-end encrypted file transfer in the browser: AES-256-GCM streams, the key in the link or behind a password, and the server-side checks for Node.",
   "keywords": [
     "e2ee",

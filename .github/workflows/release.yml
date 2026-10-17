@@ -6,10 +6,10 @@ name: Release
 # workflow and that commit (`npm audit signatures` checks it).
 #
 # Authentication is npm trusted publishing (OIDC): npm accepts a short-lived
-# token GitHub issues to this workflow, so no long-lived npm token is stored
-# anywhere. Only the very first publish, before the package exists on npm,
-# needs a token (secret NPM_TOKEN in the "npm" environment); it is deleted
-# afterwards.
+# token GitHub issues to this workflow run, so no npm token is stored
+# anywhere. On npm the package names this repository, this workflow and the
+# "npm" environment as its only trusted publisher, and publishing with a
+# token is switched off.
 on:
   release:
     types: [published]
@@ -46,5 +46,3 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm test
       - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
