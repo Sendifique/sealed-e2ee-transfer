@@ -1,0 +1,35 @@
+name: Bug
+description: Something does not work as documented.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Is this a security issue?** Then please do not file it here — use
+        "Report a security vulnerability" (see SECURITY.md).
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, what you expected, what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: The smallest code or steps that show it. Never include real keys, links or passwords.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Library version
+      placeholder: e.g. 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser or Node version
+      placeholder: e.g. Firefox 157, Node 24

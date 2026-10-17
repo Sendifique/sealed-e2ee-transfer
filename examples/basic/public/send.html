@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sealed-e2ee-transfer — send</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/app/style.css">
+<script type="importmap">{ "imports": { "@noble/hashes/": "/deps/@noble/hashes/", "client-zip": "/deps/client-zip/index.js" } }</script>
+<script type="module" src="/app/send.js"></script>
+</head>
+<body>
+<main>
+  <h1>Send files</h1>
+  <p class="note">Example application — not a production server.</p>
+
+  <form id="form">
+    <label>Files <input type="file" id="files" multiple required></label>
+
+    <label class="row"><input type="checkbox" id="use-password"> Protect with a password instead of a key in the link</label>
+    <div id="password-fields" hidden>
+      <input type="text" id="password" autocomplete="off" placeholder="at least 12 characters">
+      <button type="button" id="generate">Generate</button>
+    </div>
+
+    <button type="submit" id="send">Encrypt and upload</button>
+  </form>
+
+  <p id="status" role="status"></p>
+  <p id="result" hidden>Link: <a id="link"></a></p>
+</main>
+</body>
+</html>

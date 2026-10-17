@@ -1,0 +1,33 @@
+name: Fuzz
+
+# The fuzz tests with many more cases than on every push (test/fuzz.test.js):
+# weekly, each time with a new seed, so the cases covered keep growing. A
+# failure prints its seed; FUZZ_SEED=<seed> repeats it exactly. Can also be
+# started by hand, optionally with a seed.
+on:
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      seed:
+        description: 'FUZZ_SEED to repeat (empty: a new one)'
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 26
+      - run: npm ci --no-audit --no-fund
+      - run: node --test test/fuzz.test.js
+        env:
+          FUZZ_CASES: '2500'
+          FUZZ_SEED: ${{ inputs.seed }}

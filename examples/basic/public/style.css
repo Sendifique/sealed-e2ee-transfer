@@ -1,0 +1,11 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+body { font: 16px/1.5 system-ui, sans-serif; margin: 0; padding: 2rem 1rem; color: #1a1a1a; background: #fafafa; }
+main { max-width: 40rem; margin: 0 auto; }
+label { display: block; margin: 0.75rem 0; }
+.row { display: flex; gap: 0.5rem; align-items: center; }
+input[type="text"], input[type="password"] { padding: 0.4rem; width: 20rem; max-width: 100%; }
+button { padding: 0.4rem 0.9rem; margin: 0.25rem 0; cursor: pointer; }
+.note { color: #8a5a00; background: #fff4d6; padding: 0.5rem 0.75rem; border-radius: 4px; }
+.error { color: #b00020; }
+#link { word-break: break-all; }
+ul { padding-left: 1.2rem; }

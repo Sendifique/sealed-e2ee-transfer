@@ -1,0 +1,30 @@
+name: Proposal or question
+description: An idea for a change, or a question about the library or the format.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please describe the change before opening a pull request — see
+        CONTRIBUTING.md. A change to the format is always a new format
+        number, never an edit to format 1.
+  - type: textarea
+    id: what
+    attributes:
+      label: What and why
+      description: What you would like to change or know, and the problem behind it.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Browser API
+        - Server helpers
+        - Format (PROTOCOL.md)
+        - Threat model or documentation
+        - Example application
+        - Other
+    validations:
+      required: true

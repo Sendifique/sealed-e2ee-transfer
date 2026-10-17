@@ -1,0 +1,56 @@
+{
+  "name": "@sendifique/sealed-e2ee-transfer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "End-to-end encrypted file transfer in the browser: AES-256-GCM streams, the key in the link or behind a password, and the server-side checks for Node.",
+  "keywords": [
+    "e2ee",
+    "end-to-end-encryption",
+    "file-transfer",
+    "aes-gcm",
+    "argon2id",
+    "webcrypto",
+    "streams"
+  ],
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/Sendifique/sealed-e2ee-transfer#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sendifique/sealed-e2ee-transfer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sendifique/sealed-e2ee-transfer/issues"
+  },
+  "type": "module",
+  "files": [
+    "src/",
+    "LICENSE",
+    "README.md",
+    "PROTOCOL.md",
+    "THREAT-MODEL.md",
+    "SECURITY.md"
+  ],
+  "exports": {
+    ".": "./src/browser/index.js",
+    "./server": "./src/server/index.js",
+    "./take-key.js": "./src/browser/take-key.js",
+    "./sw.js": "./src/browser/sw.js",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "test:e2e": "node --test \"e2e/**/*.test.js\"",
+    "example": "node examples/basic/server.js"
+  },
+  "devDependencies": {
+    "argon2": "0.45.1",
+    "playwright": "1.64.1"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.4.0",
+    "client-zip": "^2.5.1"
+  }
+}

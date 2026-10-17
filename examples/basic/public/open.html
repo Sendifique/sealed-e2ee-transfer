@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="/lib/browser/take-key.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>sealed-e2ee-transfer — open</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/app/style.css">
+<script type="importmap">{ "imports": { "@noble/hashes/": "/deps/@noble/hashes/", "client-zip": "/deps/client-zip/index.js" } }</script>
+<script type="module" src="/app/open.js"></script>
+</head>
+<body>
+<main>
+  <h1>Open a transfer</h1>
+  <p class="note">Example application — not a production server.</p>
+
+  <form id="password-form" hidden>
+    <label>Password <input type="password" id="password" autocomplete="off"></label>
+    <button type="submit" id="unlock">Unlock</button>
+  </form>
+
+  <section id="content" hidden>
+    <ul id="files"></ul>
+    <button type="button" id="download-all">Download all as ZIP</button>
+  </section>
+
+  <p id="status" role="status"></p>
+</main>
+</body>
+</html>

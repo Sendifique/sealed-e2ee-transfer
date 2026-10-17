@@ -1,0 +1,8 @@
+# What "New issue" offers. Blank issues are off, so every report goes
+# through a form — and a security issue is sent to the private channel
+# before anyone can post it in public.
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/Sendifique/sealed-e2ee-transfer/security/advisories/new
+    about: Privately, never in a public issue — see SECURITY.md.

@@ -1,0 +1,16 @@
+# Weekly update pull requests for the npm dependencies and for the GitHub
+# Actions — those stay pinned to commit SHAs, and Dependabot moves the SHA
+# together with its version comment. Every update is a pull request that
+# the tests have to pass and a person has to read; nothing is merged
+# automatically.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

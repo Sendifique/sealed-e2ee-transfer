@@ -1,0 +1,4 @@
+# LF everywhere, on every platform. Release hashes are computed over these
+# bytes; a checkout that turned them into CRLF would no longer match what is
+# served.
+* text=auto eol=lf

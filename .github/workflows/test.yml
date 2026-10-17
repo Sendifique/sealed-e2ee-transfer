@@ -1,0 +1,55 @@
+name: Tests
+
+# Every push and pull request to main runs the whole suite. This code holds
+# the transfer key in the browser, so nothing reaches a release untested.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Read-only: the tests need nothing else, and a workflow with fewer rights
+# is one less way into the release chain.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    # Every Node version package.json's "engines" promises, so the promise
+    # is tested rather than assumed.
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24, 26]
+    steps:
+      # Pinned to commit SHAs, not tags — a tag can be moved to other code.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+
+  # The whole way in real browsers: the example application, driven by
+  # Playwright in all three engines (e2e/browser.test.js).
+  e2e:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 26
+      - run: npm ci --no-audit --no-fund
+      - run: npx playwright install --with-deps ${{ matrix.browser }}
+      - run: npm run test:e2e
+        env:
+          E2E_BROWSER: ${{ matrix.browser }}
