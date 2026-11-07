@@ -62,7 +62,7 @@
     "example": "node examples/basic/server.js"
   },
   "devDependencies": {
-    "argon2": "0.45.1",
+    "argon2": "0.45.2",
     "playwright": "1.64.1"
   },
   "dependencies": {
