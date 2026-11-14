@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "argon2": "0.45.1",
-    "playwright": "1.64.1"
+    "playwright": "1.65.0"
   },
   "dependencies": {
     "@noble/hashes": "^2.4.0",
